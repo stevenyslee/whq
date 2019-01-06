@@ -29,7 +29,7 @@ Entity.prototype.cloneEntity = function(entityId) {
     }
 
     // Add link from parent to child
-    newNodeId ? this.addLink(newNodeId, tuplet[1]) : this.addLink(tuplet[0], tuplet[1]);
+    newNodeId ? this.addLink(newNodeId, tuplet[1]) : this.addLink(this.ancestors[tuplet[0]], tuplet[1]);
 
     // Create traverse graph if node not seen before
     if (!seenBefore) {
@@ -55,6 +55,7 @@ Entity.prototype.addNode = function(node) {
   }
 
   this.entity.entities.push(entity);
+  this.ancestors[node] = entity_id;
 
   return entity_id;
 };
