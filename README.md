@@ -12,8 +12,8 @@ npm install
 ```sh
 Usage:
 
-# clone entities at <inputfile> starting at <entityid>
-node <inputfile> <entityid>
+# clone JSON entities at <inputfile> starting at <entityid>
+node cloneEntity.js <inputfile> <entityid>
 
 # run tests
 npm run test
