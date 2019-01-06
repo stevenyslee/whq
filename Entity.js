@@ -16,6 +16,10 @@ Entity.prototype.cloneEntity = function(entityId) {
     this.nodesToClone.push([entityId, parent]);
   });
 
+  if (!this.adjacencyList[entityId].from.length) {
+      this.nodesToClone.push([entityId, null])
+  }
+
   while(this.nodesToClone.length) {
     let tuplet = this.nodesToClone.shift();
     let seenBefore = false;
@@ -61,6 +65,9 @@ Entity.prototype.addNode = function(node) {
 };
 
 Entity.prototype.addLink = function(to, from) {
+  if (!to || !from) {
+      return;
+  }
   let link = {
     from,
     to
