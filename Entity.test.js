@@ -224,8 +224,63 @@ describe('Entity', () => {
     expect(testEntity.entity).toMatchObject(expected);
   });
 
-  // test('Graph has parent with two Children', () => {
-  //   // expect(testEntity).toHaveProperty('cloneEntity', Function);
-  // });
+  test('Start cloning at graph head', () => {
+    entityId = 1;
+    entity = {
+      "entities": [{
+        "entity_id": 1,
+        "name": "EntityA"
+      }, {
+        "entity_id": 2,
+        "name": "EntityB"
+      }, {
+        "entity_id": 3,
+        "name": "EntityC",
+      }],
+      "links": [{
+        "from": 1,
+        "to": 2
+      }, {
+        "from": 1,
+        "to": 3
+      }]
+    };
+    expected = {
+      "entities": [{
+        "entity_id": 1,
+        "name": "EntityA"
+      }, {
+        "entity_id": 2,
+        "name": "EntityB"
+      }, {
+        "entity_id": 3,
+        "name": "EntityC",
+      }, {
+        "entity_id": 4,
+        "name": "EntityA"
+      }, {
+        "entity_id": 5,
+        "name": "EntityB"
+      }, {
+        "entity_id": 6,
+        "name": "EntityC"
+      }],
+      "links": [{
+        "from": 1,
+        "to": 2
+      }, {
+        "from": 1,
+        "to": 3
+      }, {
+        "from": 4,
+        "to": 5
+      }, {
+        "from": 4,
+        "to": 6
+      }]
+    };
+    testEntity = new Entity(entity, entityId);
+    expect(testEntity.entity).toMatchObject(expected);
+  });
 });
 
