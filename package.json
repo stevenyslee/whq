@@ -4,7 +4,7 @@
   "description": "Clone Entity and Related Entities",
   "main": "cloneEntity.js",
   "scripts": {
-    "test": "test"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/stevenyslee/whq/issues"
   },
-  "homepage": "https://github.com/stevenyslee/whq#readme"
+  "homepage": "https://github.com/stevenyslee/whq#readme",
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
 }
